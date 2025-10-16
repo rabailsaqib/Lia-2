@@ -8,7 +8,6 @@
 import pandas as pd
 
 data = pd.read_csv('obesity_data.csv')
-print(data)
 
 #Accessing individual columns:
 
@@ -37,3 +36,35 @@ data['Height'] = data['Height'].round(3)
 data['Weight'] = data['Weight'].round(3)
 data['BMI'] = data['BMI'].round(3)
 print(data)
+
+#Part 2: Filtering Data
+
+#Filtering Data to keep dataset at 500 items (or indexes):
+    
+filtered_data = []
+filtered_index= []
+
+for i in range(len(data)):
+    if i <= 500:
+        filtered_index.append(i)
+      
+filtered_data=data.iloc[filtered_index]
+print(filtered_data)
+
+#Creating separate tables for males and females
+
+filtered_females = []
+filtered_males = []
+
+for i, row in filtered_data.iterrows():
+    if row["Gender"] == "Male":
+        filtered_males.append(i)
+    else:
+        filtered_females.append(i)
+        
+filtered_males=data.iloc[filtered_males]
+filtered_females=data.iloc[filtered_females]
+
+print(filtered_males)        
+print(filtered_females)
+
