@@ -107,4 +107,3 @@ activity_level_array = np.array(filtered_activity)
 obesity_category_array = np.array(filtered_obesity)
 print("Filtered dataset ( realistic BMI values only ):")  
 print(BMI_array)     
-        
