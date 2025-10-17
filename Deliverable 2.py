@@ -28,6 +28,7 @@ weight_array = weight.to_numpy()
 BMI_array = BMI.to_numpy()
 activity_level_array = activity_level.to_numpy()
 obesity_category_array = obesity_category.to_numpy()
+
 #All dataset categories are now saved as NumPy arrays, ready to be used to plot graphs
 
 #Rounding data:
@@ -68,3 +69,42 @@ filtered_females=data.iloc[filtered_females]
 print(filtered_males)        
 print(filtered_females)
 
+
+# part 3 : Manipulating your data
+
+#Description: # This part will remove any data that looks unrealistic
+# We will calculate BMI = weight / (height * height) and values between 10 and 60 (normal human range )
+
+filtered_weight = []
+filtered_height = []
+filtered_BMI = []
+filtered_age = []
+filtered_gender = []
+filtered_activity = []
+filtered_obesity = []
+
+for i in range(len(BMI_array)) :
+    if 10 <= BMI_array[i] <= 60:
+        
+        filtered_weight.append(weight_array[i])
+        filtered_height.append(height_array[i])
+        filtered_BMI.append(BMI_array[i])
+        filtered_age.append(age_array[i])
+        filtered_gender.append(gender_array[i])
+        filtered_activity.append(activity_level_array[i])
+        filtered_obesity.append(obesity_category_array[i])
+        
+# converting them back to numpy arrays
+
+import numpy as np
+
+weight_array = np.array(filtered_weight)
+height_array = np.array(filtered_height)
+BMI_array = np.array(filtered_BMI)
+age_array = np.array(filtered_age)
+gender_array = np.array(filtered_gender)
+activity_level_array = np.array(filtered_activity)
+obesity_category_array = np.array(filtered_obesity)
+print("Filtered dataset ( realistic BMI values only ):")  
+print(BMI_array)     
+        
